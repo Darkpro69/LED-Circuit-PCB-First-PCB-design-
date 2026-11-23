@@ -79,4 +79,10 @@ Potential future improvements include clearer power-input polarity labels, a mor
 
 ## Project files
 
-The screenshots in the [images folder](images/) document the design process. Original KiCad project files (`.kicad_pro`, `.kicad_sch`, and `.kicad_pcb`) are intended to be added separately so the design can also be opened and inspected in KiCad.
+The [images folder](images/) contains screenshots of the design process. The original, editable KiCad source files are available in this repository:
+
+- [KiCad project settings](LED_Circuit_PCB.kicad_pro)
+- [Electrical schematic](LED_Circuit_PCB.kicad_sch)
+- [PCB layout](LED_Circuit_PCB.kicad_pcb)
+
+Open the project file in KiCad 10 to inspect or modify the design.
