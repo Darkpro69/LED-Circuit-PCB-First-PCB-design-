@@ -10,7 +10,7 @@ The project was completed virtually to develop practical electronics design skil
 
 ## Final PCB Design
 
-![3D PCB Design](images/3d-view.png)
+![3D PCB Design](images/1.png)
 
 ## Tools Used
 
