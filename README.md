@@ -1,120 +1,82 @@
 # LED Circuit PCB — First PCB Design
 
-## Project Overview
+![Final 3D PCB visualization](images/image.png)
 
-This project documents my first printed circuit board (PCB) design using KiCad 10.
+**My first virtual PCB design in KiCad 10**, built to learn the complete process from a simple LED circuit to an electrical schematic, component footprints, copper routing, design checks, and a 3D PCB model.
 
-The objective was to learn the complete PCB design workflow, starting from a simple LED circuit and progressing through schematic capture, component footprint selection, PCB layout, copper routing, design rule verification, and 3D visualization.
+> **Project status:** Designed and checked virtually. The PCB has **not** been manufactured, assembled, or physically tested.
 
-The project was completed virtually to develop practical electronics design skills without requiring physical components.
+## Project at a glance
 
-## Final PCB Design
+| Item | Details |
+| --- | --- |
+| Software | KiCad 10; Tinkercad Circuits |
+| Circuit | 9 V LED circuit with series current-limiting resistor |
+| Components | J1: 2-pin power header; R1: 470 Ω resistor; D1: 5 mm LED |
+| PCB | Front-copper routing, rectangular board outline, top silkscreen |
+| Verification | ERC, DRC, and schematic parity checks; reported zero errors |
+| Assembly | Virtual 3D model only |
 
-![3D PCB Design](images/1.png)
+## How the circuit works
 
-## Tools Used
+The 9 V input connects to an LED through a 470 Ω resistor. The resistor limits current through the LED. Assuming a red LED forward voltage of about 2 V, the estimated current is:
 
-- KiCad 10 — Schematic capture and PCB design
-- Tinkercad Circuits — Basic circuit simulation
-- GitHub — Project documentation and version control
+```text
+I = (Vs - V_LED) / R
+  = (9 V - 2 V) / 470 Ω
+  ≈ 0.0149 A = 14.9 mA
+```
 
-## Components
+This is a **theoretical estimate**. Actual current depends on the LED's characteristics, the supply, and real component tolerances.
 
-| Component | Description |
-|---|---|
-| J1 | 2-pin power connector |
-| R1 | 470 Ω resistor |
-| D1 | 5 mm through-hole LED |
-| Power supply | 9 V DC input |
+## Design process
 
-## Circuit Operation
+### 1. Explore the circuit in Tinkercad
 
-The circuit uses a current-limiting resistor connected in series with an LED.
+I used Tinkercad to practice connecting a 9 V battery, resistor, and LED, and explored voltage measurements with the virtual multimeter. The initial simulated circuit was a learning exercise; the PCB schematic uses **470 Ω**.
 
-When a suitable 9 V DC power supply is connected with the correct polarity, current flows through the resistor and LED.
+![Tinkercad LED circuit simulation](images/4.png)
 
-The resistor limits the current to protect the LED.
+### 2. Create the electrical schematic
 
-Assuming an LED forward voltage of approximately 2 V:
+I drew the power connector (J1), resistor (R1), and LED (D1) in KiCad's Schematic Editor and wired the circuit.
 
-\[
-I = \frac{V_s - V_{LED}}{R}
-\]
+![KiCad electrical schematic](images/3.png)
 
-\[
-I = \frac{9 - 2}{470} \approx 14.9\text{ mA}
-\]
+### 3. Choose footprints and route the PCB
 
-This is a theoretical estimate. The actual current depends on the LED characteristics.
+I selected through-hole footprints, transferred the schematic to the PCB Editor, arranged the components, created the board outline on **Edge.Cuts**, and routed connections on **F.Cu**.
 
-## Design Process
+![KiCad PCB layout with front-copper tracks](images/2.png)
 
-### 1. Circuit Simulation
+### 4. Run design checks
 
-I first explored a basic LED circuit using Tinkercad, learning about component connections, resistor selection and voltage measurement.
+I practiced using KiCad's **Electrical Rules Checker (ERC)** and **Design Rules Checker (DRC)**. I also ran the schematic-to-PCB parity check. The checked design reported **0 errors** and **0 unrouted connections**.
 
-![Tinkercad Simulation](images/tinkercad-simulation.png)
+These checks do not replace physical testing or guarantee that a manufactured circuit will work.
 
-The initial simulation was a learning prototype. The final PCB design uses a 470 Ω resistor.
+### 5. Inspect the board in 3D
 
-### 2. Schematic Design
+I viewed the PCB in KiCad's 3D Viewer and added component references and the title **LED CIRCUIT V1.0** to the front silkscreen.
 
-I created an electrical schematic in KiCad consisting of a power connector, resistor and LED.
+![KiCad 3D Viewer alongside PCB Editor](images/1.png)
 
-I connected the components and used KiCad's Electrical Rules Checker (ERC) to verify the schematic.
+## What I learned
 
-![KiCad Schematic](images/schematic.png)
+- The difference between a schematic symbol and a physical PCB footprint
+- Selecting through-hole component footprints
+- Organizing parts and routing front-copper traces
+- Creating a PCB boundary with Edge.Cuts
+- Understanding silkscreen and fabrication layers
+- Checking designs with ERC, DRC, and schematic parity
+- Documenting an engineering project with screenshots and source files
 
-### 3. PCB Layout
+## Limitations and next steps
 
-I assigned through-hole footprints, transferred the schematic into the PCB Editor and arranged the components on the board.
+This is my **first virtual PCB design**, not a finished hardware product. To validate the design in the real world, the next steps would be to confirm component specifications and pin polarity, manufacture and assemble the board, and measure LED voltage and current.
 
-I created a rectangular board outline on the Edge.Cuts layer and routed the electrical connections using front-copper traces.
+Potential future improvements include clearer power-input polarity labels, a more compact PCB outline, and improved manufacturing documentation.
 
-![PCB Layout](images/pcb-layout.png)
+## Project files
 
-### 4. Design Verification
-
-I performed the following checks:
-
-- Electrical Rules Check (ERC)
-- Design Rules Check (DRC)
-- PCB-to-schematic parity verification
-- Unrouted connection inspection
-
-The completed design reported zero errors in the performed checks.
-
-### 5. 3D Visualization
-
-I used KiCad's 3D Viewer to inspect component placement and the board's appearance.
-
-I also added silkscreen labels and the project title, "LED CIRCUIT V1.0".
-
-## What I Learned
-
-Through this project, I gained introductory experience with:
-
-- KiCad schematic capture
-- Electronic component symbols and footprints
-- Through-hole PCB design
-- Copper trace routing
-- PCB design layers and board outlines
-- ERC and DRC verification
-- 3D PCB visualization
-- Engineering project documentation
-
-## Project Status
-
-**Completed: Virtual PCB Design**
-
-The schematic and PCB layout have been created, and KiCad design checks were performed successfully.
-
-The PCB has not been physically manufactured, assembled or tested. A physical prototype and hardware measurements would be necessary to validate its real-world performance.
-
-## Future Improvements
-
-- Fabricate and assemble the PCB
-- Measure LED voltage and operating current
-- Add clearer power polarity markings
-- Reduce unnecessary board space
-- Develop more advanced PCB projects involving sensors and microcontrollers
+The screenshots in the [images folder](images/) document the design process. Original KiCad project files (`.kicad_pro`, `.kicad_sch`, and `.kicad_pcb`) are intended to be added separately so the design can also be opened and inspected in KiCad.
